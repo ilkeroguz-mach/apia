@@ -1,0 +1,80 @@
+{
+  "runId": "run_1787055888419_blfk3",
+  "projectId": "gencallar",
+  "flowId": "single-reset-password-confirm",
+  "timestamp": "2026-08-18T12:24:48.653Z",
+  "totalSteps": 1,
+  "completed": 0,
+  "failed": 1,
+  "records": [
+    {
+      "stepId": "step-reset-password-confirm",
+      "nodeId": "reset-password-confirm",
+      "title": "POST /reset-password/confirm",
+      "status": "failed",
+      "request": {
+        "method": "POST",
+        "url": "https://ecom-api.gencallar.com.tr/reset-password/confirm",
+        "headers": {},
+        "body": {
+          "token": "338d98da043af8e167be306cbec97f9416187239a784fd3ce8092589c15b69e5",
+          "password": "Password-21fa1",
+          "password_confirmation": "Password-21fa1",
+          "permissions": {
+            "phone": true,
+            "mail": true,
+            "notification": true,
+            "sms": false
+          }
+        }
+      },
+      "response": {
+        "status": 400,
+        "headers": {
+          "date": "Tue, 18 Aug 2026 12:24:48 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "121",
+          "connection": "keep-alive",
+          "content-security-policy": "default-src 'self';base-uri 'self';object-src 'none';frame-ancestors 'self';form-action 'self';script-src 'self';style-src 'self';img-src 'self' data:;font-src 'self' data:;connect-src 'self';script-src-attr 'none'",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "1; mode=block",
+          "access-control-allow-origin": "*",
+          "ratelimit-policy": "10;w=60",
+          "ratelimit-limit": "10",
+          "ratelimit-remaining": "9",
+          "ratelimit-reset": "60",
+          "x-powered-by": "Express",
+          "etag": "W/\"79-RZ87i83376lkafjtUbJSz++DTvs\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "cf-cache-status": "DYNAMIC",
+          "set-cookie": "_cfuvid=bW3wWfMkM3AGBc0pcAMcs1asedH1hQ2PEBrsCZXFFjo-1787055888.6510634-1.0.1.1-RNnN_hYF2.14ewICQGKgD5N.RoNN15qJtR3DtVLjehA; HttpOnly; SameSite=None; Secure; Path=/; Domain=gencallar.com.tr",
+          "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfEdge;dur=15,cfOrigin;dur=51",
+          "server": "cloudflare",
+          "cf-ray": "a2d0e5c81d2be860-FRA",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "body": {
+          "success": false,
+          "code": 400,
+          "data": {
+            "message": "Bu şifre sıfırlama bağlantısının süresi dolmuş veya geçersiz."
+          }
+        },
+        "durationMs": 234,
+        "curl": "curl -X POST 'https://ecom-api.gencallar.com.tr/reset-password/confirm' -H 'Content-Type: application/json' -d '{\"token\":\"338d98da043af8e167be306cbec97f9416187239a784fd3ce8092589c15b69e5\",\"password\":\"Password-21fa1\",\"password_confirmation\":\"Password-21fa1\",\"permissions\":{\"phone\":true,\"mail\":true,\"notification\":true,\"sms\":false}}'",
+        "assertions": [],
+        "exports": {},
+        "ok": false
+      },
+      "durationMs": 234
+    }
+  ]
+}

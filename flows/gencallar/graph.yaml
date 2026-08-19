@@ -1,0 +1,135 @@
+project: gencallar
+title: Gençallar — Customer Auth & Gateway Runtime
+groups:
+  - id: customer-auth
+    label: Customer Auth · /v1
+    style: dashed
+    bounds: { x: 300, y: 60, width: 330, height: 620 }
+  - id: protected-auth
+    label: Korumalı — token header gerekir
+    style: dashed
+    bounds: { x: 670, y: 60, width: 340, height: 620 }
+
+nodes:
+  - id: login
+    label: POST /auth/login
+    method: POST
+    path: /auth/login
+    type: gateway
+    service: Customer Auth
+    desc: userName + password ile giriş — token üretir (otp ayarına bağlı)
+    provides: token
+    group: customer-auth
+    pos: [330, 90]
+    body:
+      userName: "+905424553088"
+      password: "password"
+      version: 2
+
+  - id: login-rules
+    label: GET /auth/login-rules/2
+    method: GET
+    path: /auth/login-rules/2
+    type: gateway
+    service: Customer Auth
+    desc: Kullanıcının giriş kurallarını getirir (OTP / Şifre kontrolü)
+    group: customer-auth
+    pos: [330, 240]
+
+  - id: password-rules
+    label: GET /auth/password-rules
+    method: GET
+    path: /auth/password-rules
+    type: gateway
+    service: Customer Auth
+    desc: Şifre oluşturma karmaşıklık kuralları
+    group: customer-auth
+    pos: [330, 390]
+
+  - id: otp-confirm
+    label: POST /otp/confirm
+    method: POST
+    path: /otp/confirm
+    type: gateway
+    service: Customer Auth
+    desc: SMS/Email OTP doğrulama — identityHash ile oturum açar
+    provides: token
+    group: customer-auth
+    pos: [330, 540]
+    body:
+      identityHash: "{{identityHash}}"
+      otp: "123456"
+
+  - id: check-token
+    label: GET /check-token
+    method: GET
+    path: /check-token
+    type: service
+    service: Auth Service
+    desc: Token geçerliliğini ve oturum durumunu kontrol eder
+    requires: token
+    group: protected-auth
+    pos: [690, 90]
+
+  - id: refresh-token
+    label: POST /refresh-token
+    method: POST
+    path: /refresh-token
+    type: service
+    service: Auth Service
+    desc: Refresh token kullanarak yeni access token alır
+    requires: token
+    group: protected-auth
+    pos: [690, 240]
+    body:
+      refreshToken: "712e0c7a-3fd1-4228-8f02-2aefd39a0d9f"
+
+  - id: reset-password-email
+    label: POST /reset-password/request/email
+    method: POST
+    path: /reset-password/request/email
+    type: service
+    service: Auth Service
+    desc: E-posta ile şifre sıfırlama bağlantısı gönderir
+    group: protected-auth
+    pos: [690, 390]
+    body:
+      email: "admin@admin.com"
+
+  - id: reset-password-confirm
+    label: POST /reset-password/confirm
+    method: POST
+    path: /reset-password/confirm
+    type: service
+    service: Auth Service
+    desc: Sıfırlama tokeni ile yeni şifre ve onay belgelerini günceller
+    requires: token
+    group: protected-auth
+    pos: [690, 540]
+    body:
+      token: "338d98da043af8e167be306cbec97f9416187239a784fd3ce8092589c15b69e5"
+      password: "Password-21fa1"
+      password_confirmation: "Password-21fa1"
+      permissions:
+        phone: true
+        mail: true
+        notification: true
+        sms: false
+
+edges:
+  - from: login
+    to: check-token
+    label: auth.verify
+    kind: http
+  - from: login
+    to: refresh-token
+    label: auth.refresh
+    kind: http
+  - from: login
+    to: reset-password-confirm
+    label: auth.reset
+    kind: http
+  - from: otp-confirm
+    to: check-token
+    label: otp.verify
+    kind: http

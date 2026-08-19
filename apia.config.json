@@ -1,0 +1,9 @@
+{
+  "root": ".",
+  "projects": [
+    { "id": "gencallar", "label": "Gençallar", "dir": "gencallar", "base": "https://ecom-api.gencallar.com.tr" },
+    { "id": "tepehome", "label": "Tepe Home", "dir": "tepehome", "base": "https://ecom-api.tepehome.com.tr" },
+    { "id": "k-rides", "label": "K-Rides", "dir": "k-rides", "base": "https://ecom-api.k-rides.com.tr" },
+    { "id": "mymagazacilik", "label": "MyMagazacilik", "dir": "mymagazacilik", "base": "https://ecom-api-mymagazacilik.machinarium.dev" }
+  ]
+}

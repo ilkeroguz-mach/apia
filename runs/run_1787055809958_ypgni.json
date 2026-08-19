@@ -1,0 +1,84 @@
+{
+  "runId": "run_1787055809958_ypgni",
+  "projectId": "gencallar",
+  "flowId": "single-login",
+  "timestamp": "2026-08-18T12:23:30.250Z",
+  "totalSteps": 1,
+  "completed": 1,
+  "failed": 0,
+  "records": [
+    {
+      "stepId": "step-login",
+      "nodeId": "login",
+      "title": "POST /auth/login",
+      "status": "completed",
+      "request": {
+        "method": "POST",
+        "url": "https://ecom-api.gencallar.com.tr/auth/login",
+        "headers": {},
+        "body": {
+          "userName": "+905424553088",
+          "password": "password",
+          "version": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "date": "Tue, 18 Aug 2026 12:23:30 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "355",
+          "connection": "keep-alive",
+          "content-security-policy": "default-src 'self';base-uri 'self';object-src 'none';frame-ancestors 'self';form-action 'self';script-src 'self';style-src 'self';img-src 'self' data:;font-src 'self' data:;connect-src 'self';script-src-attr 'none'",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "1; mode=block",
+          "access-control-allow-origin": "*",
+          "ratelimit-policy": "10;w=60",
+          "ratelimit-limit": "10",
+          "ratelimit-remaining": "8",
+          "ratelimit-reset": "29",
+          "x-powered-by": "Express",
+          "etag": "W/\"163-deJ0VnrU2Cl2j1T56wY3pNioRQE\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "cf-cache-status": "DYNAMIC",
+          "set-cookie": "_cfuvid=OQ4OpfumsRhhqN82sMlitvHe5niKpu86Bq542Fp4w5g-1787055810.177042-1.0.1.1-6zZpdhOYnPr3Cb9SWeGQ387LiyHEyq2FVyLG_i7MKW8; HttpOnly; SameSite=None; Secure; Path=/; Domain=gencallar.com.tr",
+          "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfEdge;dur=19,cfOrigin;dur=122",
+          "server": "cloudflare",
+          "cf-ray": "a2d0e3dd9e153a3d-FRA",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "body": {
+          "success": true,
+          "code": 200,
+          "data": {
+            "message": "Eğer telefon numaranız sisteme kayıtlı ise telefonunuza doğrulama kodu gönderilecektir.",
+            "phone": "+905424553088",
+            "identityHash": "c8608d3d81b7e30dcf7c2c888553f00c0862196b166a49edb85b631745ca378a",
+            "expiredAt": "2026-08-18T12:28:30.259Z",
+            "timeRemaining": {
+              "seconds": 299,
+              "minutes": 5,
+              "formatted": "5 minutes"
+            }
+          }
+        },
+        "durationMs": 291,
+        "curl": "curl -X POST 'https://ecom-api.gencallar.com.tr/auth/login' -H 'Content-Type: application/json' -d '{\"userName\":\"+905424553088\",\"password\":\"password\",\"version\":2}'",
+        "assertions": [],
+        "exports": {
+          "token": []
+        },
+        "ok": true
+      },
+      "durationMs": 291
+    }
+  ]
+}

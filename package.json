@@ -1,0 +1,18 @@
+{
+  "name": "apia-root",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "app",
+    "services"
+  ],
+  "scripts": {
+    "dev:app": "npm run dev --workspace=app",
+    "dev:services": "npm run dev --workspace=services",
+    "dev": "concurrently \"npm run dev:services\" \"npm run dev:app\"",
+    "build": "npm run build --workspace=services && npm run build --workspace=app"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

@@ -1,0 +1,53 @@
+id: auth-flow
+title: Oturum Açma ve Token Kontrol Akışı
+entry: login
+touches: [login, check-token, refresh-token]
+vars:
+  userName: "+905424553088"
+  password: "password"
+  version: 2
+
+steps:
+  - id: login-step
+    node: login
+    title: Kullanıcı Girişi (POST /auth/login)
+    request:
+      method: POST
+      url: "{{baseUrl}}/auth/login"
+      json:
+        userName: "{{vars.userName}}"
+        password: "{{vars.password}}"
+        version: "{{vars.version}}"
+    expect:
+      - status: 200
+    export:
+      token: $.data.token
+      identityHash: $.data.identityHash
+
+  - id: check-token-step
+    node: check-token
+    needs: [login-step]
+    title: Token Doğrulama (GET /check-token)
+    request:
+      method: GET
+      url: "{{baseUrl}}/check-token"
+      headers:
+        Authorization: "Bearer {{token}}"
+        token: "{{token}}"
+    expect:
+      - status: 200
+
+  - id: refresh-token-step
+    node: refresh-token
+    needs: [check-token-step]
+    title: Yenileme Tokeni (POST /refresh-token)
+    request:
+      method: POST
+      url: "{{baseUrl}}/refresh-token"
+      headers:
+        Authorization: "Bearer {{token}}"
+        token: "{{token}}"
+      json:
+        refreshToken: "712e0c7a-3fd1-4228-8f02-2aefd39a0d9f"
+    expect:
+      - status: 200

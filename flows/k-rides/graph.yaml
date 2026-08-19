@@ -1,0 +1,44 @@
+project: k-rides
+title: K-Rides — Runtime Architecture
+groups:
+  - id: customer-auth
+    label: Customer Auth · /v1
+    style: dashed
+    bounds: { x: 300, y: 60, width: 330, height: 620 }
+  - id: protected-auth
+    label: Korumalı — token header gerekir
+    style: dashed
+    bounds: { x: 670, y: 60, width: 340, height: 620 }
+
+nodes:
+  - id: login
+    label: POST /auth/login
+    method: POST
+    path: /auth/login
+    type: gateway
+    service: Customer Auth
+    desc: userName + password ile giriş (K-Rides)
+    provides: token
+    group: customer-auth
+    pos: [330, 90]
+    body:
+      userName: "krides_user"
+      password: "password"
+      version: 2
+
+  - id: check-token
+    label: GET /check-token
+    method: GET
+    path: /check-token
+    type: service
+    service: Auth Service
+    desc: Token geçerlilik kontrolü
+    requires: token
+    group: protected-auth
+    pos: [690, 90]
+
+edges:
+  - from: login
+    to: check-token
+    label: auth.verify
+    kind: http

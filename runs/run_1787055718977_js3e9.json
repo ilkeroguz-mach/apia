@@ -1,0 +1,65 @@
+{
+  "runId": "run_1787055718977_js3e9",
+  "projectId": "gencallar",
+  "flowId": "single-check-token",
+  "timestamp": "2026-08-18T12:21:59.191Z",
+  "totalSteps": 1,
+  "completed": 0,
+  "failed": 1,
+  "records": [
+    {
+      "stepId": "step-check-token",
+      "nodeId": "check-token",
+      "title": "GET /check-token",
+      "status": "failed",
+      "request": {
+        "method": "GET",
+        "url": "https://ecom-api.gencallar.com.tr/check-token",
+        "headers": {}
+      },
+      "response": {
+        "status": 401,
+        "headers": {
+          "date": "Tue, 18 Aug 2026 12:21:59 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "68",
+          "connection": "keep-alive",
+          "content-security-policy": "default-src 'self';base-uri 'self';object-src 'none';frame-ancestors 'self';form-action 'self';script-src 'self';style-src 'self';img-src 'self' data:;font-src 'self' data:;connect-src 'self';script-src-attr 'none'",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "1; mode=block",
+          "access-control-allow-origin": "*",
+          "etag": "W/\"44-ZWOmsjpvUYcyPc5VDeTooPUD/tg\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "cf-cache-status": "DYNAMIC",
+          "set-cookie": "_cfuvid=QNJk6reA6zfWaVBivrDcjiuix1kpPOcH_bH_AEgNZ9k-1787055719.2081122-1.0.1.1-YI4DyJ2TTxZDeKpv_cLsDA6_qeP9PPdhJYaJ6n_ZBUw; HttpOnly; SameSite=None; Secure; Path=/; Domain=gencallar.com.tr",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfEdge;dur=11,cfOrigin;dur=40",
+          "server": "cloudflare",
+          "cf-ray": "a2d0e1a50eb7d25c-FRA",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "body": {
+          "success": false,
+          "code": 401,
+          "data": {
+            "message": "Token is required!"
+          }
+        },
+        "durationMs": 213,
+        "curl": "curl -X GET 'https://ecom-api.gencallar.com.tr/check-token' -H 'Content-Type: application/json'",
+        "assertions": [],
+        "exports": {},
+        "ok": false
+      },
+      "durationMs": 213
+    }
+  ]
+}

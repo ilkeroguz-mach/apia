@@ -1,0 +1,46 @@
+{
+  "runId": "run_1787055969169_yf0u6",
+  "projectId": "k-rides",
+  "flowId": "single-login",
+  "timestamp": "2026-08-18T12:26:09.224Z",
+  "totalSteps": 1,
+  "completed": 0,
+  "failed": 1,
+  "records": [
+    {
+      "stepId": "step-login",
+      "nodeId": "login",
+      "title": "POST /auth/login",
+      "status": "failed",
+      "request": {
+        "method": "POST",
+        "url": "https://ecom-api.k-rides.com.tr/auth/login",
+        "headers": {},
+        "body": {
+          "userName": "krides_user",
+          "password": "password",
+          "version": 2
+        }
+      },
+      "response": {
+        "status": 0,
+        "headers": {},
+        "body": {
+          "error": "getaddrinfo ENOTFOUND ecom-api.k-rides.com.tr"
+        },
+        "durationMs": 55,
+        "curl": "curl -X POST 'https://ecom-api.k-rides.com.tr/auth/login' -H 'Content-Type: application/json' -d '{\"userName\":\"krides_user\",\"password\":\"password\",\"version\":2}'",
+        "assertions": [
+          {
+            "passed": false,
+            "message": "Request failed: getaddrinfo ENOTFOUND ecom-api.k-rides.com.tr"
+          }
+        ],
+        "exports": {},
+        "ok": false,
+        "error": "getaddrinfo ENOTFOUND ecom-api.k-rides.com.tr"
+      },
+      "durationMs": 55
+    }
+  ]
+}

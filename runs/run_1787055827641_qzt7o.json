@@ -1,0 +1,75 @@
+{
+  "runId": "run_1787055827641_qzt7o",
+  "projectId": "gencallar",
+  "flowId": "single-otp-confirm",
+  "timestamp": "2026-08-18T12:23:47.840Z",
+  "totalSteps": 1,
+  "completed": 0,
+  "failed": 1,
+  "records": [
+    {
+      "stepId": "step-otp-confirm",
+      "nodeId": "otp-confirm",
+      "title": "POST /otp/confirm",
+      "status": "failed",
+      "request": {
+        "method": "POST",
+        "url": "https://ecom-api.gencallar.com.tr/otp/confirm",
+        "headers": {},
+        "body": {
+          "identityHash": "{{identityHash}}",
+          "otp": "123456"
+        }
+      },
+      "response": {
+        "status": 401,
+        "headers": {
+          "date": "Tue, 18 Aug 2026 12:23:47 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "119",
+          "connection": "keep-alive",
+          "content-security-policy": "default-src 'self';base-uri 'self';object-src 'none';frame-ancestors 'self';form-action 'self';script-src 'self';style-src 'self';img-src 'self' data:;font-src 'self' data:;connect-src 'self';script-src-attr 'none'",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "1; mode=block",
+          "access-control-allow-origin": "*",
+          "ratelimit-policy": "30;w=60",
+          "ratelimit-limit": "30",
+          "ratelimit-remaining": "28",
+          "ratelimit-reset": "56",
+          "x-powered-by": "Express",
+          "etag": "W/\"77-oZYa0HTgreBayEjB2sLU3iPue3Q\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "cf-cache-status": "DYNAMIC",
+          "set-cookie": "_cfuvid=mtMMMg5.lEedAIi7fUyXcm8tfGEqLvvV5LDjRfaj47w-1787055827.8477829-1.0.1.1-3YHEwMZ33gHpwBXLK7WuBMtdD61jMQX.PcZgKheepdM; HttpOnly; SameSite=None; Secure; Path=/; Domain=gencallar.com.tr",
+          "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfEdge;dur=16,cfOrigin;dur=46",
+          "server": "cloudflare",
+          "cf-ray": "a2d0e44c08e11010-FRA",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "body": {
+          "success": false,
+          "code": 401,
+          "data": {
+            "message": "Doğrulama kodu hatalı veya süresi dolmuş. Lütfen tekrar deneyin."
+          }
+        },
+        "durationMs": 199,
+        "curl": "curl -X POST 'https://ecom-api.gencallar.com.tr/otp/confirm' -H 'Content-Type: application/json' -d '{\"identityHash\":\"{{identityHash}}\",\"otp\":\"123456\"}'",
+        "assertions": [],
+        "exports": {
+          "token": []
+        },
+        "ok": false
+      },
+      "durationMs": 199
+    }
+  ]
+}
