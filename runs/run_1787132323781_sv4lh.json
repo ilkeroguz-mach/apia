@@ -1,0 +1,71 @@
+{
+  "runId": "run_1787132323781_sv4lh",
+  "projectId": "gencallar",
+  "flowId": "single-login-rules",
+  "timestamp": "2026-08-19T09:38:44.061Z",
+  "totalSteps": 1,
+  "completed": 1,
+  "failed": 0,
+  "records": [
+    {
+      "stepId": "step-login-rules",
+      "nodeId": "login-rules",
+      "title": "GET /auth/login-rules/2",
+      "status": "completed",
+      "request": {
+        "method": "GET",
+        "url": "https://ecom-api.gencallar.com.tr/auth/login-rules/2",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "date": "Wed, 19 Aug 2026 09:38:44 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "83",
+          "connection": "keep-alive",
+          "content-security-policy": "default-src 'self';base-uri 'self';object-src 'none';frame-ancestors 'self';form-action 'self';script-src 'self';style-src 'self';img-src 'self' data:;font-src 'self' data:;connect-src 'self';script-src-attr 'none'",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "1; mode=block",
+          "access-control-allow-origin": "*",
+          "x-powered-by": "Express",
+          "etag": "W/\"53-5I8x4WFJo2IQBrglfu7280AW9Wg\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "accept-ranges": "bytes",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "REVALIDATED",
+          "set-cookie": "_cfuvid=0d_bYnaowq63Nxh3qIUg3oHR.G0ddHrM9jmGM3VNlbo-1787132323.9507513-1.0.1.1-l5TIHLvBiJFCD7hrfvMSJBdcJtqstvwWnONNYZQ1gtc; HttpOnly; SameSite=None; Secure; Path=/; Domain=gencallar.com.tr",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "vary": "accept-encoding",
+          "server-timing": "cfCacheStatus;desc=\"REVALIDATED\", cfEdge;dur=15,cfOrigin;dur=118",
+          "server": "cloudflare",
+          "cf-ray": "a2d82fe0ae1e8e9a-FRA",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "body": {
+          "success": true,
+          "code": 200,
+          "data": {
+            "userName": "phone",
+            "otp": true,
+            "password": false
+          }
+        },
+        "durationMs": 280,
+        "curl": "curl -X GET 'https://ecom-api.gencallar.com.tr/auth/login-rules/2' -H 'Content-Type: application/json'",
+        "assertions": [],
+        "exports": {},
+        "ok": true
+      },
+      "durationMs": 280
+    }
+  ]
+}

@@ -56,12 +56,19 @@ export const EdgeLayer: React.FC<EdgeLayerProps> = ({
 
         const { d, tx, ty } = getEdgePath(a, b);
         const bStatus = statuses[b.id] || 'idle';
-        const isRunning = bStatus === 'running';
+        const aStatus = statuses[a.id] || 'idle';
+
+        // An edge is active if target node b is running/completed/failed OR source node a is running
+        const isRunning = bStatus === 'running' || (aStatus === 'running' && bStatus === 'idle');
 
         let strokeColor = 'var(--color-neutral-700)';
-        if (isRunning) strokeColor = 'var(--color-accent)';
-        else if (bStatus === 'ok') strokeColor = 'var(--color-accent-600)';
-        else if (bStatus === 'err') strokeColor = '#ef4444';
+        if (isRunning) {
+          strokeColor = 'var(--color-accent)';
+        } else if (bStatus === 'err') {
+          strokeColor = '#ef4444';
+        } else if (bStatus === 'ok') {
+          strokeColor = 'var(--color-accent-600)';
+        }
 
         return (
           <g key={`${e.from}-${e.to}-${idx}`}>

@@ -1,0 +1,55 @@
+{
+  "runId": "run_1787132326564_vkyf1",
+  "projectId": "gencallar",
+  "flowId": "single-password-rules",
+  "timestamp": "2026-08-19T09:38:46.618Z",
+  "totalSteps": 1,
+  "completed": 0,
+  "failed": 1,
+  "records": [
+    {
+      "stepId": "step-password-rules",
+      "nodeId": "password-rules",
+      "title": "GET /auth/password-rules",
+      "status": "failed",
+      "request": {
+        "method": "GET",
+        "url": "https://ecom-api.gencallar.com.tr/auth/password-rules",
+        "headers": {}
+      },
+      "response": {
+        "status": 403,
+        "headers": {
+          "date": "Wed, 19 Aug 2026 09:38:46 GMT",
+          "content-type": "text/html; charset=UTF-8",
+          "content-length": "5451",
+          "connection": "close",
+          "accept-ch": "Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA",
+          "cf-mitigated": "challenge",
+          "content-security-policy": "default-src 'none'; script-src 'nonce-l50Tk5oRxdMayc8xhLQqgc' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'",
+          "server": "cloudflare",
+          "critical-ch": "Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA",
+          "cross-origin-embedder-policy": "require-corp",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "origin-agent-cluster": "?1",
+          "permissions-policy": "accelerometer=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=(),xr-spatial-tracking=*",
+          "referrer-policy": "same-origin",
+          "server-timing": "chlray;desc=\"a2d82ff189118e9a\"",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "SAMEORIGIN",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "cf-ray": "a2d82ff189118e9a-FRA",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"><meta name=\"robots\" content=\"noindex,nofollow\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta http-equiv=\"content-security-policy\" content=\"default-src &#39;none&#39;; script-src &#39;nonce-l50Tk5oRxdMayc8xhLQqgc&#39; &#39;unsafe-eval&#39; https://challenges.cloudflare.com; script-src-attr &#39;none&#39;; style-src &#39;unsafe-inline&#39;; img-src &#39;self&#39; https://challenges.cloudflare.com; connect-src &#39;self&#39; https://challenges.cloudflare.com; frame-src &#39;self&#39; https://challenges.cloudflare.com blob:; child-src &#39;self&#39; https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri &#39;self&#39;\"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,\"Noto Sans\",sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;padding-left:1.5rem;max-width:60rem}@media (width <= 720px){.main-content{margin-top:4rem}}#challenge-error-text{background-image:url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+\");background-repeat:no-repeat;background-size:contain;padding-left:34px}</style><meta http-equiv=\"refresh\" content=\"360\"></head><body><div class=\"main-wrapper\" role=\"main\"><div class=\"main-content\"><noscript><div class=\"h2\"><span id=\"challenge-error-text\">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script nonce=\"l50Tk5oRxdMayc8xhLQqgc\">(function(){window._cf_chl_opt = {cFPWv: 'g',cH: 'ia1OkfuuZ93T2F9QjUpgmhUyi7trlvNlSsbHnQ5gtgM-1787132326-1.2.1.1-sfSR19d3Q9IzJPAOa6TekedssJJKZMae_cqnT72OSfmDl.W6QXt5NHvnYoDoZ4ME',cITimeS: '1787132326',cN: 'l50Tk5oRxdMayc8xhLQqgc',cRay: 'a2d82ff189118e9a',cTplB: '0',cTplC:0,cTplO:0,cTplV:5,cType: 'managed',cUPMDTk:\"/auth/password-rules?__cf_chl_tk=E_9tSfT0oKg_Z_sarb8zRowhnodM1tELanal9ct5pqY-1787132326-1.0.1.1-wOox0qHBicEjyE52g96UWSN21vznMjA7kNkFABXF77U\",cvId: '3',cZone: 'ecom-api.gencallar.com.tr',fa:\"/auth/password-rules?__cf_chl_f_tk=E_9tSfT0oKg_Z_sarb8zRowhnodM1tELanal9ct5pqY-1787132326-1.0.1.1-wOox0qHBicEjyE52g96UWSN21vznMjA7kNkFABXF77U\",md: '4Uk88dryWn0f548JX1cph8u07uC.7KAF58J.127feqY-1787132326-1.2.1.1-b5OUAuPVa_cmNvSg3U3ZHUzdHpaKr0M1CqOVnOEaA8B8C81nS4lmAvVJ2kk7ItlmBpumsGR2V56hEuCfiaVqjt5yXFohnhKkca7zsUBeoyZ1i2URPcI3aTeA8HCDOgPrN8.1hsIwtdg_qytfEwYgwaNnTwfIaOQ9MKg5ceVYkjRt.wLZVUfkMz3KYdZeQoGJ3az8uGcBP.78U24rIrEmz6hodqKHvV2E_p.oIREXeAJGElksgOVnlTKZo_ZUGuoyzkTJ8pFRJW3AJjnzIRDujeRXvDjGbOGssICTxADL40lb8qQZikWumIhq7LFKc3lPYoeOkrD6Wum5VLGVwwu6AohJECIF2xMhBdc7wYerpyO_Atsombrr32uez4qqFRxZuJOvOyVJP7D3WfktkWlqPyToK_4V1L7Ebx_FinFMP9qsQuTLuUhCJAngYt3KWVe05MmhmWj0kqZ2KP_T034Lgsi3A25Z02oByRXRdRpcSd_eOBxtZAQ3VK_QJnTug9oJ1fpC69uKoRzVuytjBWctshhQKD9yT2glj2Kodhk.StMEyuJN7PCr2pxCEX2Cgo25WQXuUVtWaTvezBUc4IQwH9HaRFwLJvItD5cpZbfMBltVHSnELW.s6X0GHtX1XK4WFeoOWqXlvffwpuyyz8vfBM7fZR8o8HxXWZj1Z7oxFbMfBHBm8C6qRzzK8sp1XWEpllMUOJSghZR_bUB2vtH6nobLvhkwEUAMwchm70lMjRTm21_Bs7KWGQVUVKY8HidhAZqSl30ldDNzKjZzuVnKUjXRT3z16AbF7sF1xAw.UnlQROcghiEJGWh2t6_87yXhORo4QEU4AlWjUoKpSXMCZ.oNNpBAtlExLvKILKT3MvPMy4viOQMWVK.NLUIZReN.7q8silclCzIqmIqCOlsROBx4N7wuFOGZFeB4tz7wvVfyR909jjYk1TjC5qZNUaz6Ocx6mRzXFYMqzIS71azglw2UJqUS.sMZybjpsEFZKIhLxHYXbs7lhoFOggdgH.NSN.vM1bLtRwUVJfBjelYQKtx9iWZzglksvkRjJobj9dw',mdrd: 'OzES3OUmyyXNWJEOquo0wf1a09kZ7..MM6lC7uharfQ-1787132326-1.2.1.1-IN51Q7UKExhGt3A.5fnu53qqMA9ig_tKRRDgTBU3NNPDbgWRBicPJ8XQ_wu917sjg7UsIBIEcjku61mHQnlzIlB8iR7pV9J19Vw.VyOmjaCX2xupQHiWyBMiPH4sVee5rC9lDtjwjgoGtWDCKvmPsbfVjZFJ81DiSHlM3Ro.DE80XeWqRNwu3mawTiZafdMqpKduqM48NdK9NJ7MreqwdJFKqj8pdiYs0JNmbN9P_72wHmqgblgnlpa5_9Ooq065',};var a = document.createElement('script');a.nonce = 'l50Tk5oRxdMayc8xhLQqgc';a.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=a2d82ff189118e9a';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null,\"/auth/password-rules?__cf_chl_rt_tk=E_9tSfT0oKg_Z_sarb8zRowhnodM1tELanal9ct5pqY-1787132326-1.0.1.1-wOox0qHBicEjyE52g96UWSN21vznMjA7kNkFABXF77U\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>",
+        "durationMs": 53,
+        "curl": "curl -X GET 'https://ecom-api.gencallar.com.tr/auth/password-rules' -H 'Content-Type: application/json'",
+        "assertions": [],
+        "exports": {},
+        "ok": false
+      },
+      "durationMs": 53
+    }
+  ]
+}

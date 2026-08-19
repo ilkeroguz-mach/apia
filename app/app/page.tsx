@@ -39,6 +39,12 @@ export default function Home() {
   useEffect(() => {
     async function fetchGraph() {
       try {
+        // Reset status and results when project changes
+        setStatuses({});
+        setResults({});
+        setStepRecords([]);
+        setRunSummary(null);
+
         const res = await fetch(`${API_BASE}/api/projects/${activeEnv}/graph`);
         if (!res.ok) return;
         const data = await res.json();
@@ -72,7 +78,8 @@ export default function Home() {
     const nodeDef = nodes.find(n => n.id === nodeId);
     if (!nodeDef) return;
 
-    setStatuses(prev => ({ ...prev, [nodeId]: 'running' }));
+    // Reset status for a clean new run (only active node is running)
+    setStatuses({ [nodeId]: 'running' });
     const t0 = performance.now();
 
     try {
@@ -98,7 +105,7 @@ export default function Home() {
           const ms = data.durationMs || Math.round(performance.now() - t0);
           const resultObj = data.result || { status: data.status === 'completed' ? 200 : 500, ms, body: { message: data.error } };
           
-          setStatuses(prev => ({ ...prev, [nodeId]: data.status === 'completed' ? 'ok' : 'err' }));
+          setStatuses({ [nodeId]: data.status === 'completed' ? 'ok' : 'err' });
           setResults(prev => ({ ...prev, [nodeId]: resultObj }));
 
           // Extract token if login or otp node
@@ -133,7 +140,7 @@ export default function Home() {
       };
     } catch (err: any) {
       const ms = Math.round(performance.now() - t0);
-      setStatuses(prev => ({ ...prev, [nodeId]: 'err' }));
+      setStatuses({ [nodeId]: 'err' });
       setResults(prev => ({
         ...prev,
         [nodeId]: { status: 0, ms, body: { error: String(err) } }
@@ -146,6 +153,10 @@ export default function Home() {
     setIsRunPanelOpen(true);
     setStepRecords([]);
     setRunSummary(null);
+
+    // Reset node execution statuses before full flow run
+    setStatuses({});
+    setResults({});
 
     try {
       const res = await fetch(`${API_BASE}/api/runs`, {
