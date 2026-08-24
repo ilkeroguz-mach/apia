@@ -9,14 +9,15 @@ import { SideDrawer, LogEntry } from '../components/SideDrawer';
 import { RunPanel, StepRecord } from '../components/RunPanel';
 
 const INITIAL_NODES: NodeData[] = [
+  // Group 1: Customer Auth
   {
     id: 'login',
     method: 'POST',
     path: '/auth/login',
     service: 'Customer Auth',
-    desc: 'userName + password ile giriş — token üretir (otp ayarına bağlı)',
+    desc: 'Telefon No + OTP ile giriş (version: 2)',
     provides: 'token',
-    pos: [330, 90],
+    pos: [65, 90],
     body: { userName: '+905424553088', password: 'password', version: 2 }
   },
   {
@@ -25,7 +26,7 @@ const INITIAL_NODES: NodeData[] = [
     path: '/auth/login-rules/2',
     service: 'Customer Auth',
     desc: 'Kullanıcının giriş kurallarını getirir (OTP / Şifre kontrolü)',
-    pos: [330, 240]
+    pos: [65, 230]
   },
   {
     id: 'password-rules',
@@ -33,7 +34,7 @@ const INITIAL_NODES: NodeData[] = [
     path: '/auth/password-rules',
     service: 'Customer Auth',
     desc: 'Şifre oluşturma karmaşıklık kuralları',
-    pos: [330, 390]
+    pos: [65, 370]
   },
   {
     id: 'otp-confirm',
@@ -42,9 +43,96 @@ const INITIAL_NODES: NodeData[] = [
     service: 'Customer Auth',
     desc: 'SMS/Email OTP doğrulama — identityHash ile oturum açar',
     provides: 'token',
-    pos: [330, 540],
+    pos: [65, 510],
     body: { identityHash: 'hash_val', otp: '123456' }
   },
+
+  // Group 2: Verification (Gateway/Auth/Verification)
+  {
+    id: 'verification-request',
+    method: 'POST',
+    path: '/v1/me/verification',
+    service: 'Verification',
+    desc: 'Kullanıcı e-posta/telefon doğrulama kodu talebi gönderir',
+    requires: 'token',
+    pos: [440, 90]
+  },
+  {
+    id: 'verification-resend',
+    method: 'POST',
+    path: '/v1/me/verification/resend',
+    service: 'Verification',
+    desc: 'Doğrulama kodunu tekrar gönderir',
+    requires: 'token',
+    pos: [440, 230]
+  },
+  {
+    id: 'verification-verify',
+    method: 'POST',
+    path: '/v1/verification/verify',
+    service: 'Verification',
+    desc: 'Doğrulama kodunu ve identityHash doğrular',
+    pos: [440, 370],
+    body: {
+      identityHash: 'fa3ee1c77b8d670eb3524bc3c7a52dae7b552dfde825d906db4f414dc045f3f1',
+      token: '9ba1d8835a6dae4d034a64a057688ec1'
+    }
+  },
+  {
+    id: 'verification-status',
+    method: 'GET',
+    path: '/v1/me/verification/status',
+    service: 'Verification',
+    desc: 'Kullanıcı doğrulama durumunu getirir',
+    requires: 'token',
+    pos: [440, 510]
+  },
+
+  // Group 3: Password Activation (Gateway/Auth/Password Activation)
+  {
+    id: 'login-pw-trigger',
+    method: 'POST',
+    path: '/auth/login',
+    service: 'Password Activation',
+    desc: 'E-posta + Parola ile giriş (version: 1)',
+    pos: [815, 90],
+    body: { userName: 'admin@admin.com', password: 'password', version: 1 }
+  },
+  {
+    id: 'pw-act-request',
+    method: 'POST',
+    path: '/password-activation/request',
+    service: 'Password Activation',
+    desc: 'Parola aktifleştirme için OTP talep et',
+    pos: [815, 230],
+    body: { username: 'test@example.com', type: 'email' }
+  },
+  {
+    id: 'pw-act-verify',
+    method: 'POST',
+    path: '/password-activation/otp/verify',
+    service: 'Password Activation',
+    desc: 'Parola aktifleştirme OTP kodunu doğrula ve aktivasyon tokeni al',
+    provides: 'token',
+    pos: [815, 370],
+    body: { identityHash: 'a1b2c3d4e5f6', otp: '123456' }
+  },
+  {
+    id: 'pw-act-set',
+    method: 'POST',
+    path: '/password-activation/set',
+    service: 'Password Activation',
+    desc: 'Yeni parola belirle ve sözleşmeleri onayla',
+    pos: [815, 510],
+    body: {
+      token: 'a3f8b2c1d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1',
+      password: 'Password-123!',
+      password_confirmation: 'Password-123!',
+      permissions: { phone: true, mail: true, notification: true, sms: false }
+    }
+  },
+
+  // Group 4: Korumalı — Token / Auth
   {
     id: 'check-token',
     method: 'GET',
@@ -52,7 +140,7 @@ const INITIAL_NODES: NodeData[] = [
     service: 'Auth Service',
     desc: 'Token geçerliliğini ve oturum durumunu kontrol eder',
     requires: 'token',
-    pos: [690, 90]
+    pos: [1190, 90]
   },
   {
     id: 'refresh-token',
@@ -61,7 +149,7 @@ const INITIAL_NODES: NodeData[] = [
     service: 'Auth Service',
     desc: 'Refresh token kullanarak yeni access token alır',
     requires: 'token',
-    pos: [690, 240],
+    pos: [1190, 230],
     body: { refreshToken: '712e0c7a-3fd1-4228-8f02-2aefd39a0d9f' }
   },
   {
@@ -70,7 +158,7 @@ const INITIAL_NODES: NodeData[] = [
     path: '/reset-password/request/email',
     service: 'Auth Service',
     desc: 'E-posta ile şifre sıfırlama bağlantısı gönderir',
-    pos: [690, 390],
+    pos: [1190, 370],
     body: { email: 'admin@admin.com' }
   },
   {
@@ -80,7 +168,7 @@ const INITIAL_NODES: NodeData[] = [
     service: 'Auth Service',
     desc: 'Sıfırlama tokeni ile yeni şifre ve onay belgelerini günceller',
     requires: 'token',
-    pos: [690, 540],
+    pos: [1190, 510],
     body: {
       token: '338d98da043af8e167be306cbec97f9416187239a784fd3ce8092589c15b69e5',
       password: 'Password-21fa1',
@@ -92,14 +180,22 @@ const INITIAL_NODES: NodeData[] = [
 
 const INITIAL_EDGES: EdgeData[] = [
   { from: 'login', to: 'check-token', label: 'auth.verify' },
-  { from: 'login', to: 'refresh-token', label: 'auth.refresh' },
-  { from: 'login', to: 'reset-password-confirm', label: 'auth.reset' },
-  { from: 'otp-confirm', to: 'check-token', label: 'otp.verify' }
+  { from: 'login', to: 'verification-request', label: 'verify.request' },
+  { from: 'verification-request', to: 'verification-verify', label: 'verify.confirm' },
+  { from: 'verification-verify', to: 'verification-status', label: 'verify.status' },
+  { from: 'login-pw-trigger', to: 'pw-act-request', label: 'pw.trigger' },
+  { from: 'pw-act-request', to: 'pw-act-verify', label: 'pw.otp' },
+  { from: 'pw-act-verify', to: 'pw-act-set', label: 'pw.set' },
+  { from: 'pw-act-set', to: 'login', label: 'pw.complete' },
+  { from: 'otp-confirm', to: 'check-token', label: 'otp.verify' },
+  { from: 'login', to: 'refresh-token', label: 'auth.refresh' }
 ];
 
 const INITIAL_GROUPS: GroupData[] = [
-  { id: 'customer-auth', label: 'Customer Auth · /v1', bounds: { x: 300, y: 60, width: 330, height: 620 } },
-  { id: 'protected-auth', label: 'Korumalı — token header gerekir', bounds: { x: 670, y: 60, width: 340, height: 620 } }
+  { id: 'customer-auth', label: 'Customer Auth · /v1', bounds: { x: 50, y: 60, width: 330, height: 680 } },
+  { id: 'verification', label: 'Verification · /v1/me', bounds: { x: 425, y: 60, width: 330, height: 680 } },
+  { id: 'password-activation', label: 'Password Activation', bounds: { x: 800, y: 60, width: 330, height: 680 } },
+  { id: 'protected-auth', label: 'Korumalı — Token / Auth', bounds: { x: 1175, y: 60, width: 330, height: 680 } }
 ];
 
 export default function Home() {
@@ -201,8 +297,9 @@ export default function Home() {
 
     const flowSteps = [
       { id: 'step-1', nodeId: 'login', title: 'POST /auth/login' },
-      { id: 'step-2', nodeId: 'check-token', title: 'GET /check-token' },
-      { id: 'step-3', nodeId: 'refresh-token', title: 'POST /refresh-token' }
+      { id: 'step-2', nodeId: 'verification-request', title: 'POST /v1/me/verification' },
+      { id: 'step-3', nodeId: 'pw-act-request', title: 'POST /password-activation/request' },
+      { id: 'step-4', nodeId: 'check-token', title: 'GET /check-token' }
     ];
 
     let completed = 0;
@@ -246,8 +343,8 @@ export default function Home() {
             backgroundSize: '48px 48px'
           }}
         >
-          <div style={{ position: 'relative', width: '1060px', height: '760px' }}>
-            <EdgeLayer edges={edges} nodes={nodes} statuses={statuses} />
+          <div style={{ position: 'relative', width: '1560px', height: '780px' }}>
+            <EdgeLayer edges={edges} nodes={nodes} statuses={statuses} width={1560} height={780} />
             <GroupOverlay groups={groups} />
             {nodes.map(node => (
               <NodeCard

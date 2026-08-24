@@ -22,8 +22,8 @@ export const EdgeLayer: React.FC<EdgeLayerProps> = ({
   edges,
   nodes,
   statuses,
-  width = 1100,
-  height = 760
+  width = 1520,
+  height = 780
 }) => {
   const NODE_W = 300;
   const NODE_H = 96;
